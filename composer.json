@@ -1,0 +1,23 @@
+{
+    "name": "i3or1s/php-server",
+    "license": "proprietary",
+    "type": "project",
+    "description": "Testing php as a Server",
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "scripts": {
+        "post-install-cmd": [
+        ],
+        "post-update-cmd": [
+        ]
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "stable"
+}
