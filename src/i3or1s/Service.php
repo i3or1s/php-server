@@ -15,22 +15,27 @@ class Service {
 		$this->_address = $address;
 	}
 
-	public function run(){
+    function __destruct()
+    {
+        socket_close($this->_socket);
+    }
+
+
+    public function run(){
 		$this->openSocket();
 		$this->_running = true;
 		while($this->_running){
 			$this->readRequest();
 		}
-		socket_close($this->_socket);
 	}
 
 	public function stop(){
-		$thi->_running = false;
+		$this->_running = false;
 	}
 
 	private function openSocket(){
 		$this->_socket = socket_create(AF_INET, SOCK_STREAM, 0);
-		socket_bind($this->_socket, $this->_address, $this->_port) or die('Could not bind to address');
+        socket_bind($this->_socket, $this->_address, $this->_port) or die('Could not bind to address');
 		socket_listen($this->_socket);
 	}
 
